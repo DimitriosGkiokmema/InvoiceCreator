@@ -1,0 +1,155 @@
+body {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.header-container {
+	display: flex;
+}
+
+.left-child {
+	flex: 3;
+}
+
+.right-child {
+	flex: 2;
+}
+
+.company-info-container {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+}
+
+.invoice-metadata-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.header-row,
+.invoice-metadata-table-rows {
+	display: flex;
+	min-height: 20px;
+	max-height: auto;
+	align-items: center;
+}
+
+.header-row div,
+.invoice-metadata-table-rows div {
+	flex: 1;
+	text-align: center;
+}
+
+.header-row {
+	background-color: #0F4762;
+	color: white;
+	font-weight: bold;
+	padding: 0 10px;
+}
+
+.title {
+	color: #0F4762;
+}
+
+.title.company {
+	font-size: 18px;
+}
+
+.title.invoice {
+	text-align: end;
+	width: 100%;
+	font-size: 26px;
+}
+
+.text-col {
+	height: 100%;
+	text-align: start !important;
+}
+
+.bill-terms-container {
+	display: flex;
+	margin-top: 50px;
+}
+
+.bill-terms-container.left-child.invoice-metadata-container {
+	width: 60% !important;
+}
+
+.invoice-metadata-container.bill {
+	width: 50%;
+}
+
+.item-table {
+	margin-top: 50px;
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+
+thead {
+	background-color: #0F4762;
+	color: white;
+	font-weight: bold;
+	padding: 0 10px;
+}
+
+.item-table th:nth-child(1) { width: 50%; } /* DESCRIPTION */
+.item-table th:nth-child(2) { width: 20%; } /* SQUARE FEET */
+.item-table th:nth-child(3) { width: 10%; } /* QUANTITY */
+
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4) {
+	text-align: center;
+}
+
+.item-rows td {
+	border: 1px solid #a59f9f;
+}
+
+footer {
+	margin-top: 50px;
+	display: flex;
+}
+
+.deposit-table-container {
+	display: flex;
+	min-width: 300px;
+}
+
+.left-child.deposit {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	min-width: 300px;
+}
+
+.price-table-container {
+	justify-self: end;
+}
+
+.price-table thead {
+	visibility: hidden;
+}
+
+.price-table {
+	margin-top: 30px;
+	border-spacing: 0;
+	width: 200px;
+}
+
+.price-table tbody tr td:nth-child(1) {
+	background-color: #82CAEC;
+	width: 0%;
+	padding-left: 10px;
+}
+
+.price-table tbody tr td:nth-child(2) {
+	background-color: #C0E4F5;
+	text-align: end;
+	width: 0%;
+	padding-right: 10px;
+}
+
+.price-table th:nth-child(1) { width: 55%; }

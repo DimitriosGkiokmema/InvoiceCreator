@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HomePage } from './webpages/home';
+import { InvoiceViewPage } from "./webpages/invoiceView";
+import { InvoiceCreate } from "./webpages/invoiceCreate";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        {/* <nav>
+          <ul style={{ display: "flex", gap: "20px" }}>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/user/123">User Details</Link>
+            </li>
+            <li>
+              <Link to="/profile">User Profile</Link>
+            </li>
+          </ul>
+        </nav> */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/invoice/:invoiceID" element={<InvoiceViewPage />} />
+          <Route path="/create" element={<InvoiceCreate />} />
+          {/* <Route path="/about" element={<About />} />
+          <Route path="/user/:userId" element={<UserDetail />} />
+          <Route path="/profile" element={<UserProfile />} /> */}
+        </Routes>
+      </BrowserRouter>
   );
 }
 

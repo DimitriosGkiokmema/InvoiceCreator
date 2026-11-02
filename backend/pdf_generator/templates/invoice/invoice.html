@@ -1,0 +1,157 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Estimate</title>
+    <meta name="description" content="Job estimate">
+  </head>
+
+  <body>
+    <div class="header-container">
+      <div class="left-child">
+        <h1 class="company title">
+          Extra Miles Tile & Store Installations LTD
+        </h1>
+
+        <div class="company-info-container">
+          <a href="mailto:niko.gk@icloud.com">niko.gk@icloud.com</a>
+          <div>
+            Phone: <a href="tel:+16476173156">(647) 617-3156</a>
+          </div>
+          <div class="company-ids">HST 77849 7115 RP0001</div>
+          <div class="company-ids">WSIB number 9655982</div>
+        </div>
+      </div>
+
+      <div class="right-child">
+        <h1 class="invoice title">ESTIMATE</h1>
+
+        <div class="invoice-metadata-container">
+          <div class="header-row">
+            <div>ESTIMATE #</div>
+            <div>DATE</div>
+          </div>
+          <div class="invoice-metadata-table-rows">
+            <div>{{ invoice.invoiceID }}</div>
+            <div>{{ invoice.invoiceDate }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bill-terms-container">
+      <div class="left-child">
+        <div class="invoice-metadata-container bill">
+          <div class="header-row">
+            BILL TO
+          </div>
+          <div class="invoice-metadata-table-rows">
+            <div class="text-col">
+              {{ invoice.clientName }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-child">
+        <div class="invoice-metadata-container">
+          <div class="header-row">
+            TERMS
+          </div>
+          <div class="invoice-metadata-table-rows">
+            <div class="text-col">
+              A 50% deposit of <strong>${{ half }} </strong>
+              is required <strong>two weeks prior</strong> to starting		
+              the job. <br>
+              A 40% deposit of <strong>${{ fourtyPercent }} </strong>
+              is required upon 		
+              completion. <br>
+              A 10% deposit of <strong>${{ tenPercent }} </strong>
+              is required two weeks		
+              after job completion.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="item-table">
+      <thead>
+        <tr>
+          <th>DESCRIPTION</th>
+          <th>SQUARE FEET</th>
+          <th>QUANTITY</th>
+          <th>SUBTOTAL</th>
+        </tr>
+      </thead>
+      <tbody class="item-rows">
+        {% for item in invoice.items.all %}
+        <tr>
+          <td>{{ item.description }}</td>
+          <td>{{ item.squareFeet }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.itemPrice }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <footer>
+      <div class="left-child deposit">
+        <div>Thank you for your business!</div>
+
+        <div class="deposit-table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>DEPOSITS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for deposit in invoice.deposits.all %}
+              <tr>
+                <td>Deposit of ${{ deposit.amount }} was made on {{ deposit.date|date:"F j, Y" }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="right-child">
+        <div class="price-table-container">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>ITEM</th>
+                <th>PRICE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SUBTOTAL</td>
+                <td>${{ invoice.total }}</td>
+              </tr>
+              <tr>
+                <td>HST (13%)</td>
+                <td>${{ tax }}</td>
+              </tr>
+              <tr>
+                <td><strong>TOTAL</strong></td>
+                <td><strong>${{ totalPrice }}</strong></td>
+              </tr>
+              <tr>
+                <td>DEPOSIT</td>
+                <td>${{ depositTotal }}</td>
+              </tr>
+              <tr>
+                <td>REMAINING</td>
+                <td>${{ remaining }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
